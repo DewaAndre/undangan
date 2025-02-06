@@ -82,7 +82,7 @@ const Time = () => {
           {Object.entries(timeLeft).map(([unit, value]) => (
             <div
               key={unit}
-              className="bg-[#AF8F67] text-white px-6 py-3 rounded-lg text-center w-24 sm:w-28 md:w-32 lg:w-36 xl:w-40 basis-1/4"
+              className="bg-[#AF8F67] text-white px-0 py-3 rounded-lg text-center w-24 sm:w-28 md:w-32 lg:w-36 xl:w-40 basis-1/4 md:px-6"
             >
               <span className="text-2xl sm:text-3xl md:text-4xl font-bold">
                 {value}
