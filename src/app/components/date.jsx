@@ -42,6 +42,7 @@ const Date = () => {
 
   return (
     <div
+    id='date'
       className="p-4 bg-cover bg-center min-h-screen"
       style={{
         backgroundImage: "url('/img/bg1.png')",
@@ -64,7 +65,7 @@ const Date = () => {
 
         <div className="flex justify-center items-center mt-8 mb-8">
           <div className="flex flex-col items-center w-12 sm:w-16 md:w-20">
-            <span className="text-2xl sm:text-3xl text-black font-semibold">04</span>
+            <span className="text-2xl sm:text-3xl text-black font-semibold">03</span>
             <div className="border-t border-gray-600 w-full"></div>
           </div>
           <div className="text-lg sm:text-xl md:text-2xl mx-2 w-12 sm:w-16 md:w-20">
@@ -79,7 +80,7 @@ const Date = () => {
         <h2 className="font-medium text-3xl sm:text-4xl md:text-5xl text-[#323332] leading-tight">
           Selasa,
           <br />
-          <span className="text-3xl sm:text-4xl md:text-5xl">04 Maret 2025</span>
+          <span className="text-3xl sm:text-4xl md:text-5xl">03 Maret 2025</span>
         </h2>
 
         <div className="mt-4">

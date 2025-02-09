@@ -40,6 +40,13 @@ const Head = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const scrollToLokasi = () => {
+    const lokasiElement = document.getElementById('date'); 
+    if (lokasiElement) {
+      lokasiElement.scrollIntoView({ behavior: 'smooth' }); 
+    }
+  };
+
   return (
     <div className="bg-[#F8F6F0] flex flex-col items-center overflow-y-auto p-4 min-h-screen">
       <div className="w-full flex justify-center">
@@ -62,7 +69,10 @@ const Head = () => {
         />
       </div>
 
-      <button className="bg-[#B99769] hover:bg-[#533f23] text-white font-bold my-8 py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+      <button
+        className="bg-[#B99769] hover:bg-[#533f23] text-white font-bold my-8 py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        onClick={scrollToLokasi} 
+      >
         Save the Date
       </button>
 
@@ -79,7 +89,7 @@ const Head = () => {
       <h2 className="mx-auto text-center great-vibes-regular text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-black font-bold leading-tight">Om Swastiastu</h2>
       <div className="flex items-center justify-center my-12 max-w-[90%] md:max-w-[70rem]">
         <p className="mx-auto text-center text-base sm:text-lg md:text-xl lg:text-2xl text-black leading-relaxed">
-          Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa/Tuhan Yang Maha Esa, perkenankan kami mengundang Bapak/Ibu/Saudara/i, pada Upacara Dewa Yadnya Melaspas Merajan keluarga kami. Yang akan dilaksanakan pada :
+          Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa/Tuhan Yang Maha Esa, perkenankan kami mengundang Bapak/Ibu/Saudara/i, pada Upacara Dewa Yadnya Rsi Gana & Nubug Pedagingan Merajan dan Mepandes putra-putri kami. Yang akan dilaksanakan pada :
         </p>
       </div>
     </div>

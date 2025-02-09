@@ -3,11 +3,11 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 const Time = () => {
-  const [timeLeft, setTimeLeft] = useState({}); // Inisialisasi dengan objek kosong
+  const [timeLeft, setTimeLeft] = useState({});
   const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
-    const targetDate = new Date(new Date().getFullYear(), 2, 4).getTime();
+    const targetDate = new Date(new Date().getFullYear(), 2, 3).getTime(); // Ubah tanggal di sini
 
     function calculateTimeLeft() {
       const now = new Date().getTime();
@@ -39,10 +39,10 @@ const Time = () => {
       setWindowWidth(window.innerWidth);
     }
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     handleResize();
 
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const imageSize = (width) => {

@@ -1,69 +1,125 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { FaCheckCircle, FaCheckDouble, FaTimesCircle, FaTrash } from 'react-icons/fa';
 
-const ucapan = () => {
+const Ucapan = () => {
   const [nama, setNama] = useState('');
   const [ucapan, setUcapan] = useState('');
   const [kehadiran, setKehadiran] = useState('Hadir');
   const [daftarUcapan, setDaftarUcapan] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    const fetchUcapan = async () => {
+      try {
+        const response = await fetch('/api/ucapan');
+        console.log("Response Status:", response.status); // Lihat status kode response
+        console.log("Response Headers:", response.headers);
+        const responseText = await response.text(); // Ambil isi response
+        console.log("Response Body:", responseText); // Lihat isi response
+  
+        if (!response.ok) {
+          throw new Error("Gagal mengambil data");
+        }
+  
+        const data = JSON.parse(responseText); // Konversi ke JSON
+        setDaftarUcapan(data);
+      } catch (error) {
+        console.error("Error:", error.message);
+      }
+    };
+  
+    fetchUcapan();
+  }, []);
+  
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (nama.trim() !== "" && ucapan.trim() !== "") {
-      setDaftarUcapan([
-        ...daftarUcapan,
-        { nama, ucapan, kehadiran },
-      ]);
-      setNama('');
-      setUcapan('');
-      setKehadiran('Hadir');
+      const newUcapan = { nama, ucapan, kehadiran };
+
+      setIsLoading(true);
+
+      try {
+        const response = await fetch('/api/ucapan', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newUcapan),
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || 'Gagal mengirim data. Status: ' + response.status);
+        }
+
+        const data = await response.json();
+        setDaftarUcapan([...daftarUcapan, data]);
+
+        setNama('');
+        setUcapan('');
+        setKehadiran('Hadir');
+      } catch (error) {
+        console.error('Terjadi kesalahan saat mengirim data:', error);
+        alert(error.message);
+      } finally {
+        setIsLoading(false);
+      }
     } else {
       alert("Nama dan ucapan tidak boleh kosong!");
     }
   };
 
+  const handleDelete = async (id) => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(`/api/ucapan/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Gagal menghapus data");
+      }
+
+      setDaftarUcapan(daftarUcapan.filter(item => item.id !== id));
+      alert("Ucapan berhasil dihapus!");
+    } catch (error) {
+      console.error("Terjadi kesalahan saat menghapus data:", error);
+      alert(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+
   const renderStatus = (kehadiran) => {
-    if (kehadiran === 'Hadir') {
-      return (
-        <span className="text-yellow-500 mr-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 inline-block"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 12l2 2 4-4m6 8a10 10 0 11-20 0 10 10 0 0120 0z"
-            />
-          </svg>
-          Hadir
-        </span>
-      );
-    } else {
-      return (
-        <span className="text-gray-500 mr-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 inline-block"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M10 19h4a5 5 0 005-5V6a5 5 0 00-5-5H6a5 5 0 00-5 5v8a5 5 0 005 5z"
-            />
-          </svg>
-          {kehadiran}
-        </span>
-      );
+    switch (kehadiran) {
+      case 'Hadir':
+        return (
+          <span className="text-green-500 mr-2 flex items-center">
+            <FaCheckCircle className="h-5 w-5 mr-1" />
+            Hadir
+          </span>
+        );
+      case 'Akan Hadir':
+        return (
+          <span className="text-yellow-500 mr-2 flex items-center">
+            <FaCheckDouble className="h-5 w-5 mr-1" />
+            Akan Hadir
+          </span>
+        );
+      case 'Tidak Hadir':
+        return (
+          <span className="text-gray-500 mr-2 flex items-center">
+            <FaTimesCircle className="h-5 w-5 mr-1" />
+            Tidak Hadir
+          </span>
+        );
+      default:
+        return null;
     }
   };
 
@@ -124,26 +180,32 @@ const ucapan = () => {
             </select>
           </div>
 
-          <button
-            type="submit"
-            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Kirimkan Ucapan
+          <button type="submit" disabled={isLoading} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            {isLoading ? 'Mengirim...' : 'Kirimkan Ucapan'}
           </button>
         </form>
 
         <div className="border rounded p-4">
-          {daftarUcapan.map((item, index) => (
-            <div key={index} className="mb-2 p-2 border rounded flex items-center">
-              <strong className="font-bold mr-2">{item.nama}:</strong>
-              {renderStatus(item.kehadiran)}
-              <div>{item.ucapan}</div>
-            </div>
-          ))}
+          {daftarUcapan.length > 0 ? (
+            daftarUcapan.map((item) => (
+              <div key={item.id} className="mb-2 p-2 border rounded flex items-center justify-between">
+                <div className="flex items-center">
+                  <strong className="font-bold mr-2 text-black">{item.nama}:</strong>
+                  {renderStatus(item.kehadiran)}
+                  <div className='text-black ml-2'>{item.ucapan}</div> {/* Pindahkan ucapan ke sini */}
+                </div>
+                <button onClick={() => handleDelete(item.id)} className="text-red-500">
+                  <FaTrash className="h-5 w-5" />
+                </button>
+              </div>
+            ))
+          ) : (
+            <p className="text-gray-500">Belum ada ucapan.</p>
+          )}
         </div>
       </div>
     </div>
   );
 };
 
-export default ucapan;
+export default Ucapan;
