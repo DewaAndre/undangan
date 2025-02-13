@@ -94,7 +94,7 @@ const Date = () => {
 
         <div className="flex justify-center items-center mt-8 mb-8">
           <div className="flex flex-col items-center w-12 sm:w-16 md:w-20">
-            <span className="text-2xl sm:text-3xl text-black font-semibold">12</span>
+            <span className="text-2xl sm:text-3xl text-black font-semibold">09</span>
             <div className="border-t border-gray-600 w-full"></div>
           </div>
           <div className="text-black text-lg sm:text-xl md:text-2xl mx-2">:</div>
@@ -114,7 +114,7 @@ const Date = () => {
             </div>
           </div>
           <div className="text-2xl sm:text-3xl md:text-4xl text-black">
-            12.00 WITA - Selesai
+            09.00 WITA - Selesai
           </div>
         </div>
       </div>
