@@ -79,7 +79,7 @@ const Lokasi = () => {
 
       <div className="mepandes my-60" data-aos="fade-up">
         <h3 className="mx-auto text-center great-vibes-regular text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-black font-bold leading-tight">
-          Mepandes Putra-Putri
+          Mepandes
         </h3>
         <h3 className="mx-auto mt-4 text-center text-base sm:text-lg md:text-xl lg:text-2xl text-black leading-relaxed">
           Dewa Ayu Ananda Dea Anjelina

@@ -81,7 +81,7 @@ const Date = () => {
         </div>
 
         <h2 className="font-medium text-3xl sm:text-4xl md:text-5xl text-[#323332] leading-tight" data-aos="fade-up">
-          Selasa,
+          Senin,
           <br />
           <span className="text-3xl sm:text-4xl md:text-5xl">03 Maret 2025</span>
         </h2>
