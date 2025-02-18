@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import CSS AOS
 
@@ -52,16 +51,13 @@ const Head = () => {
         />
       </div>
 
-      {/* Tombol dengan Animasi */}
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        className="bg-[#B99769] hover:bg-[#533f23] text-white font-bold my-8 py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      <button
+        className="bg-[#B99769] hover:bg-[#533f23] text-white font-bold my-8 py-2 px-4 rounded focus:outline-none focus:shadow-outline transform transition-transform hover:scale-105"
         onClick={scrollToLokasi}
-        data-aos="fade-up" // AOS Animation
+        data-aos="fade-up"
       >
         Save the Date
-      </motion.button>
+      </button>
 
       {/* Gambar Bawah */}
       <div className="w-full flex justify-center">
