@@ -3,7 +3,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import React from "react";
 
-export default function Home({ onOpenInvitation }) {
+export default function Home({ onOpenInvitation, onPlayMusic }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -19,7 +19,10 @@ export default function Home({ onOpenInvitation }) {
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        onClick={onOpenInvitation} // Fungsi dari parent untuk mengganti halaman
+        onClick={() => {
+          onOpenInvitation(); // Ganti halaman
+          onPlayMusic(); // Putar musik
+        }}
         className="mt-6 flex items-center space-x-2 px-6 py-2 bg-[#C8A67B] text-white rounded-full shadow-md hover:bg-[#b08c65] transition"
       >
         <span className="text-lg">📩</span>

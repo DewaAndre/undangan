@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import CSS AOS
 
@@ -52,13 +53,15 @@ const Head = () => {
       </div>
 
       {/* Tombol dengan Animasi */}
-      <button
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
         className="bg-[#B99769] hover:bg-[#533f23] text-white font-bold my-8 py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         onClick={scrollToLokasi}
         data-aos="fade-up" // AOS Animation
       >
         Save the Date
-      </button>
+      </motion.button>
 
       {/* Gambar Bawah */}
       <div className="w-full flex justify-center">
@@ -86,7 +89,10 @@ const Head = () => {
           className="mx-auto text-center text-base sm:text-lg md:text-xl lg:text-2xl text-black leading-relaxed"
           data-aos="fade-up" // AOS Animation
         >
-          Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa/Tuhan Yang Maha Esa, perkenankan kami mengundang Bapak/Ibu/Saudara/i, pada Upacara Rsi Gana, Ngenteg Linggih Lan Mepandes putra-putri kami. Yang akan dilaksanakan pada :
+          Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa/Tuhan Yang
+          Maha Esa, perkenankan kami mengundang Bapak/Ibu/Saudara/i, pada
+          Upacara Rsi Gana, Ngenteg Linggih Lan Mepandes putra-putri kami. Yang
+          akan dilaksanakan pada :
         </p>
       </div>
     </div>

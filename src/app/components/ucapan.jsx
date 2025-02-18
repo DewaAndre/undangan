@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import {
   FaCheckCircle,
   FaCheckDouble,
@@ -156,7 +157,10 @@ const Ucapan = () => {
       }}
     >
       <div className="bg-[#F7F6F1] mx-auto mt-10 mb-10 p-8 rounded-xl shadow-xl">
-        <h3 className="mx-auto text-center great-vibes-regular text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-black font-bold mt-12 my-20 leading-tight" data-aos="fade-up">
+        <h3
+          className="mx-auto text-center great-vibes-regular text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-black font-bold mt-12 my-20 leading-tight"
+          data-aos="fade-up"
+        >
           Kirim Ucapan
         </h3>
 
@@ -214,13 +218,15 @@ const Ucapan = () => {
             </select>
           </div>
 
-          <button
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             type="submit"
             disabled={isLoading}
             className="bg-[#B99769] hover:bg-[#533f23] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             {isLoading ? "Mengirim..." : "Kirimkan Ucapan"}
-          </button>
+          </motion.button>
         </form>
 
         <div className="border rounded p-4">

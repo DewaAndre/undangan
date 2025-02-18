@@ -2,8 +2,8 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import 'aos/dist/aos.css'; // Import AOS CSS
-
+import { motion } from "framer-motion";
+import "aos/dist/aos.css"; // Import AOS CSS
 
 const Lokasi = () => {
   const location = "https://maps.app.goo.gl/Nrei86FFa8iVHrgTA";
@@ -60,20 +60,28 @@ const Lokasi = () => {
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
-        <a
+        <motion.a
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           href={`${location}`}
           className="inline-flex items-center px-4 py-2 bg-[#484646] text-white font-bold rounded-lg shadow-md hover:bg-opacity-70"
           target="_blank"
           rel="noopener noreferrer"
         >
           <FaMapMarkerAlt className="mr-2" /> Lihat di Google Maps
-        </a>
+        </motion.a>
       </div>
-      <h3 className="mx-auto text-center text-base sm:text-lg md:text-xl lg:text-2xl text-black leading-relaxed" data-aos="fade-up">
+      <h3
+        className="mx-auto text-center text-base sm:text-lg md:text-xl lg:text-2xl text-black leading-relaxed"
+        data-aos="fade-up"
+      >
         “Dengan Yadnya, semoga kami memperoleh sifat-sifat kemuliaan, kejayaan,
         kekuatan rohani, kekuatan jasmani, kesejahteraan dan perlindungan”
       </h3>
-      <h3 className="mx-auto text-center text-base sm:text-lg md:text-xl lg:text-2xl text-black leading-relaxed" data-aos="fade-up">
+      <h3
+        className="mx-auto text-center text-base sm:text-lg md:text-xl lg:text-2xl text-black leading-relaxed"
+        data-aos="fade-up"
+      >
         (Yayurweda XV.113)
       </h3>
 
