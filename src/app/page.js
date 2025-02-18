@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import Head from "./components/head";
 import Date from "./components/date";
 import Lokasi from "./components/lokasi";
