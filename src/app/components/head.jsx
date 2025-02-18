@@ -52,9 +52,9 @@ const Head = () => {
       </div>
 
       <button
-        className="bg-[#B99769] hover:bg-[#533f23] text-white font-bold my-8 py-2 px-4 rounded focus:outline-none focus:shadow-outline transform transition-transform hover:scale-105"
+        className="bg-[#B99769] hover:bg-[#533f23] text-white font-bold my-8 py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         onClick={scrollToLokasi}
-        data-aos="fade-up"
+        data-aos="fade-up" // AOS Animation
       >
         Save the Date
       </button>
