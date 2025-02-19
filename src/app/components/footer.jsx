@@ -13,7 +13,7 @@ const footer = () => {
         </div>
         <div className="flex items-center mt-10">
           <a
-            href="https://api.whatsapp.com/send?phone=nomor_telepon_anda"
+            href="https://api.whatsapp.com/send?phone=085858721920"
             className="flex items-center"
           >
             <FaWhatsapp className="h-6 w-6 mr-2 text-[#D3AE84]" />{" "}
@@ -22,10 +22,6 @@ const footer = () => {
           </a>
         </div>
       </div>
-      {/* <div className="container mx-auto mt-4 text-center">
-        <img src="/path/ke/ikon/a.svg" alt="A" className="h-12 w-12 mx-auto" />
-        <p className="text-xs mt-2">bhirama</p>
-      </div> */}
     </footer>
   );
 };
