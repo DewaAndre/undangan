@@ -230,24 +230,26 @@ const Ucapan = () => {
         </form>
 
         <div className="border rounded p-4">
-          {daftarUcapan.length > 0 ? (
-            daftarUcapan.map((item) => (
-              <div
-                key={item.id}
-                className="mb-2 p-2 border rounded flex items-center justify-between"
-              >
-                <div>
-                  <p className="font-bold text-black">{item.nama}</p>
-                  <p className="text-black">{item.ucapan}</p>
-                  <p className="text-sm text-gray-600">
-                    Kehadiran: {item.kehadiran}
-                  </p>
+          <div className="max-h-[500px] overflow-y-auto">
+            {daftarUcapan.length > 0 ? (
+              daftarUcapan.map((item) => (
+                <div
+                  key={item.id}
+                  className="mb-2 p-2 border rounded flex items-center justify-between"
+                >
+                  <div>
+                    <p className="font-bold text-black">{item.nama}</p>
+                    <p className="text-black">{item.ucapan}</p>
+                    <p className="text-sm text-gray-600">
+                      Kehadiran: {item.kehadiran}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))
-          ) : (
-            <p className="text-center text-gray-500">Belum ada ucapan</p>
-          )}
+              ))
+            ) : (
+              <p className="text-center text-gray-500">Belum ada ucapan</p>
+            )}
+          </div>
         </div>
       </div>
     </div>
