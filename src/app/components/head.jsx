@@ -26,7 +26,7 @@ const Head = () => {
   };
 
   return (
-    <div className="bg-[#F8F6F0] flex flex-col items-center p-4 min-h-screen">
+    <div className="bg-[#F8F6F0] flex flex-col items-center min-h-screen">
       {/* Gambar Atas */}
       <div className="w-full flex justify-center">
         <Image
