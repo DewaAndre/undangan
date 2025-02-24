@@ -35,7 +35,7 @@ const Head = () => {
           alt="Gelungan"
           width={400}
           height={400}
-          data-aos="fade-down" // AOS Animation
+          data-aos="zoom-in" // AOS Animation
         />
       </div>
 
@@ -67,7 +67,7 @@ const Head = () => {
           alt="Gelungan"
           width={400}
           height={400}
-          data-aos="fade-up" // AOS Animation
+          data-aos="zoom-in" // AOS Animation
         />
       </div>
 
