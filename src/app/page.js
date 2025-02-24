@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 import { AnimatePresence } from "framer-motion";
 import Head from "./components/head";
 import Date from "./components/date";
+import Dudonan from "./components/dudonan"; 
 import Lokasi from "./components/lokasi";
 import Time from "./components/time";
 import Ucapan from "./components/ucapan";
@@ -36,6 +37,7 @@ const Page = () => {
           <div>
             <Head />
             <Date />
+            <Dudonan />
             <Lokasi />
             <Time />
             <Ucapan />
